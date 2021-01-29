@@ -1,0 +1,23 @@
+<br>
+<br>
+<br>
+<code>{{ credentials | json }}</code>
+<div class="container">
+    <!--<form #connection="ngForm">
+    <input type="text" [(ngModel)]="credentials.email" class="form-control" placeholder="email" name="email"
+    required
+    pattern="^[a-z]{2,}@email.com$">
+    <br><br>
+    <input type="text" [(ngModel)]="credentials.password" class="form-control" placeholder="password" name="password"
+    required minlength="5">
+    <br><br>
+    <button [disabled]="connection.invalid" class="btn btn-primary btn-lg" (click)="askServiceToConnect()">Se connecter</button>
+</form>-->
+<form [formGroup]="connection">
+    <input type="text" formControlName="email" class="form-control" placeholder="email" name="email"/>
+    <br><br>
+    <input type="text" formControlName="password" class="form-control" placeholder="password" name="password"/>
+    <br><br>
+    <button [disabled]="connection.invalid" class="btn btn-primary btn-lg" (click)="askServiceToConnect()">Se connecter</button>
+</form>
+</div>
