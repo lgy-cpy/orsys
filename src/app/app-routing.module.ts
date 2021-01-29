@@ -9,15 +9,15 @@ import { MessageGuard } from './services/message.guard';
 const routes: Routes = [
   {
     path:'messages',
-    component: PageMessagesComponent
+    component: PageMessagesComponent,
+    canActivate: [/*MessageGuard*/]
   },
   {
     path:'mentions',
-    component: PageMentionsComponent//,
-    // canActivate: [MessageGuard]
+    component: PageMentionsComponent
   },
   {
-    path:'',
+    path:'**',
     component: PageLoginComponent
   }
 ];

@@ -1,7 +1,7 @@
 <br>
 <br>
 <br>
-<code>{{ credentials | json }}</code>
+<code>{{ connection.value | json }}</code>
 <div class="container">
     <!--<form #connection="ngForm">
     <input type="text" [(ngModel)]="credentials.email" class="form-control" placeholder="email" name="email"
@@ -16,8 +16,14 @@
 <form [formGroup]="connection">
     <input type="text" formControlName="email" class="form-control" placeholder="email" name="email"/>
     <br><br>
-    <input type="text" formControlName="password" class="form-control" placeholder="password" name="password"/>
+    <input type="text" (change)="test($event)" formControlName="password" class="form-control" placeholder="password" name="password"/>
     <br><br>
+    <div class="alert alert-danger" *ngIf="messageError != null && messageError">
+        <strong>Identification Invalide !</strong>
+    </div>
+    <div class="alert alert-danger" *ngIf="messageError != null && !messageError">
+        <strong>Identification réussie !</strong>
+    </div>
     <button [disabled]="connection.invalid" class="btn btn-primary btn-lg" (click)="askServiceToConnect()">Se connecter</button>
 </form>
 </div>

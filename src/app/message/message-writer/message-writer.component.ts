@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-message-writer',
@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MessageWriterComponent implements OnInit {
 
+  userText = '';
+  @Output() text$ = new EventEmitter<string>();
   constructor() { }
 
   ngOnInit(): void {
   }
 
+ // @HostListener('window:keyup.Enter')
+  @HostListener('keyup.Enter')
+  sendText() {
+    this.text$.emit(this.userText);
+  }
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Message } from 'src/app/services/interfaces/message';
 
 @Component({
   selector: 'app-message-list',
@@ -12,4 +13,6 @@ export class MessageListComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  @Input()
+  messages: Message[] = [];
 }

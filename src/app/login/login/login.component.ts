@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
 import { User } from 'src/app/services/interfaces/user';
 
 @Component({
@@ -9,22 +10,28 @@ import { User } from 'src/app/services/interfaces/user';
 })
 export class LoginComponent implements OnInit {
 
-  credentials: Omit<User, 'id'> = {
+  /**credentials: Omit<User, 'id'> = {
     email:'',
     password:''
-  };
+  };**/
 
   connection = new FormGroup({
-    email: new FormControl('', Validators.required),
-    password: new FormControl('', [Validators.required, Validators.minLength(5)])
+    email: new FormControl('', [Validators.required, Validators.pattern('^[a-z]{2,}@email.com$')]),
+    password: new FormControl('', [Validators.required, Validators.minLength(3)])
   });
 
-  constructor() { }
+  constructor(private auth: AuthService) { }
 
   ngOnInit(): void {
   }
 
+  public messageError = false;
+
   askServiceToConnect() {
-    console.log(this.credentials);
+    this.auth.connect(this.connection.value).subscribe(connected => this.messageError = !connected);
+  }
+
+  test(event: any) {
+    console.log(event);
   }
 }

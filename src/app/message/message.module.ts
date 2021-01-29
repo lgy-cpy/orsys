@@ -4,13 +4,15 @@ import { MessageListItemComponent } from './message-list-item/message-list-item.
 import { MessageListComponent } from './message-list/message-list.component';
 import { MessageWriterComponent } from './message-writer/message-writer.component';
 import { MessageComponent } from './message/message.component';
+import { FormsModule } from '@angular/forms';
 
 
 
 @NgModule({
   declarations: [MessageListItemComponent, MessageListComponent, MessageWriterComponent, MessageComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   exports: [MessageComponent]
 })

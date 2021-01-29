@@ -33,3 +33,8 @@
 * `@Optional`
 * `@SkipSelf`
 * `@Self`
+
+## json-server
+**Visite**
+* http://localhost:5050/messages?_expand=user
+* http://localhost:5050/users?_embed=messages

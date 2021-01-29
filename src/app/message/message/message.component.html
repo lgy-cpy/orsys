@@ -1,1 +1,12 @@
-<p>message works!</p>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<code>{{ msg.messages$ | async | json }}</code>
+<app-message-list [messages]="msg.messages$ | async"></app-message-list>
+<button (click)="msg.getMessages()" class="btn btn-info">LOAD</button>
+<div class="container">
+    <app-message-writer (text$)="requestMessageCreation($event)"></app-message-writer>
+</div>
